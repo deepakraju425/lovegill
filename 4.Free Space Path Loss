@@ -1,0 +1,28 @@
+#4. Free Space Path Loss
+
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+f = 900
+
+
+distance = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+
+fspl = 32.44 + 20*np.log10(distance) + 20*np.log10(f)
+
+# Display results
+for i in range(len(distance)):
+    print("Distance:", distance[i], "km",
+          "Path Loss:", round(fspl[i], 2), "dB")
+
+
+plt.plot(distance, fspl, marker='o')
+plt.title("Free Space Path Loss")
+plt.xlabel("Distance (km)")
+plt.ylabel("Path Loss (dB)")
+plt.grid()
+plt.show()
