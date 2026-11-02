@@ -1,0 +1,69 @@
+ #3 frequency Reuse
+
+
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+import math
+
+i = 1
+j = 2
+N = (i*i) + (i*j) + (j*j)
+R = 2
+D = R * np.sqrt(3*N)
+
+cx = [0, D, D/2]
+cy = [0, 0, 0.866*D]
+
+plt.plot(cx, cy, "o--")
+
+plt.text(cx[0], cy[0], "f1")
+plt.text(cx[1], cy[1], "f1")
+plt.text(cx[2], cy[2], "f1")
+
+
+def hexagon(x1, y1, r):
+    x = [
+        x1-r,
+        x1-r/2,
+        x1+r/2,
+        x1+r,
+        x1+r/2,
+        x1-r/2,
+        x1-r
+    ]
+
+    y = [
+        y1,
+        y1+0.866*r,
+        y1+0.866*r,
+        y1,
+        y1-0.866*r,
+        y1-0.866*r,
+        y1
+    ]
+
+    plt.fill(x, y, color="orange")
+
+
+hexagon(cx[0], cy[0], R)
+hexagon(cx[1], cy[1], R)
+hexagon(cx[2], cy[2], R)
+
+# Display distance between co-cells
+plt.text((cx[0]+cx[1])/2, (cy[0]+cy[1])/2, f"{D:.2f}")
+plt.text((cx[1]+cx[2])/2, (cy[1]+cy[2])/2, f"{D:.2f}")
+
+
+plt.xlabel("Horizontal Distance")
+plt.ylabel("Vertical Distance")
+plt.title("Frequency Reuse in Cellular System")
+plt.grid()
+plt.axis("equal")
+plt.show()
+
+# Display calculated values
+print("Cluster Size N =", N)
+print("Cell Radius R =", R)
+print("Frequency Reuse Distance D =", round(D, 2))
