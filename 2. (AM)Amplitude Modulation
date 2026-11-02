@@ -1,0 +1,39 @@
+#2. (AM)Amplitude Modulation
+
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+t = np.linspace(0, 1, 1000)
+
+fm = 5
+fc = 50
+Am = 1
+Ac = 1
+
+
+message = Am * np.sin(2 * np.pi * fm * t)
+
+
+carrier = Ac * np.sin(2 * np.pi * fc * t)
+
+
+modulated = (1 + message) * carrier
+
+plt.figure(figsize=(10, 7))
+
+plt.subplot(3, 1, 1)
+plt.plot(t, message)
+plt.title("Message Signal")
+
+plt.subplot(3, 1, 2)
+plt.plot(t, carrier)
+plt.title("Carrier Signal")
+
+plt.subplot(3, 1, 3)
+plt.plot(t, modulated)
+plt.title("Amplitude Modulated Signal")
+
+plt.tight_layout()
+plt.show()
